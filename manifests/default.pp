@@ -42,6 +42,11 @@ package { "libtiff-devel":
   ensure => present,
 }
 
+file { '/apps/iiif':
+  ensure => directory,
+  owner  => 'vagrant',
+  group  => 'vagrant',
+}
 host { 'fcrepolocal':
   ip => '192.168.40.10',
 }

@@ -19,14 +19,16 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/openports.sh', args: [80]
   # Python
   config.vm.provision "shell", path: 'scripts/python.sh'
-  # runtime environment
-  config.vm.provision "shell", path: 'scripts/env.sh'
-  # Apache runtime setup
-  config.vm.provision "shell", path: 'scripts/apache.sh'
   # mod_wsgi
   config.vm.provision "shell", path: 'scripts/modwsgi.sh'
   # Loris
   config.vm.provision "shell", path: 'scripts/loris.sh'
   # install Loris runtime
   config.vm.provision "shell", path: 'scripts/loris-install.sh', privileged: false
+  # trust fcrepo SSL certificate
+  config.vm.provision "shell", path: 'scripts/trust-fcrepo.sh', privileged: false
+  # runtime environment
+  config.vm.provision "shell", path: 'scripts/env.sh'
+  # Apache runtime setup
+  config.vm.provision "shell", path: 'scripts/apache.sh'
 end
