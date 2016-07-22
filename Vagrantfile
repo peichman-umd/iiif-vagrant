@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "puppet"
 
   # firewall
-  config.vm.provision "shell", path: 'scripts/openports.sh', args: [80]
+  config.vm.provision "shell", path: 'scripts/openports.sh', args: [80, 443]
   # Python
   config.vm.provision "shell", path: 'scripts/python.sh'
   # mod_wsgi
@@ -31,4 +31,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/env.sh'
   # Apache runtime setup
   config.vm.provision "shell", path: 'scripts/apache.sh'
+  # HTTPS certificate for Apache
+  config.vm.provision "shell", path: 'scripts/https-cert.sh'
 end

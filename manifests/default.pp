@@ -41,6 +41,9 @@ package { "freetype-devel":
 package { "libtiff-devel":
   ensure => present,
 }
+package { "mod_ssl":
+  ensure => present,
+}
 
 file { '/apps/iiif':
   ensure => directory,
