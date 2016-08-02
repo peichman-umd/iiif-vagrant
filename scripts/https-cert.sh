@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # SSL Certificate (self-signed)
-mkdir -p /apps/ssl/{key,csr,crt,cnf}
+mkdir -p /apps/ssl/{key,csr,cert,cnf}
 
 KEY=/apps/ssl/key/iiiflocal.key
 CSR=/apps/ssl/csr/iiiflocal.csr
-CRT=/apps/ssl/crt/iiiflocal.crt
+CRT=/apps/ssl/cert/iiiflocal.crt
 CNF=/apps/ssl/cnf/iiiflocal.cnf
 
 cat > "$CNF" <<END
