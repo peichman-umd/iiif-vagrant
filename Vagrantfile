@@ -25,8 +25,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/loris.sh'
   # install Loris runtime
   config.vm.provision "shell", path: 'scripts/loris-install.sh', privileged: false
-  # trust fcrepo SSL certificate
-  config.vm.provision "shell", path: 'scripts/trust-fcrepo.sh', privileged: false
   # runtime environment
   config.vm.provision "shell", path: 'scripts/env.sh'
   # Apache runtime setup

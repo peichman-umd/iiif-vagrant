@@ -23,3 +23,9 @@ python setup.py install \
     --source-images /apps/iiif/images \
     --loris-owner "$SERVICE_USER" \
     --loris-group "$SERVICE_GROUP"
+
+# Unless Loris Version > 2.0.1, we need to patch the resolver
+if [ $LORIS_VERSION = "2.0.1" ]; then
+    echo "LORIS_VERSION is 2.0.1 - Patching resolver.py"
+    /vagrant/scripts/install-patched-resolver.sh
+fi
