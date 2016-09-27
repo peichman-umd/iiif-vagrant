@@ -4,3 +4,4 @@ export SERVICE_USER=vagrant
 export SERVICE_GROUP=vagrant
 export SSL_CERT_NAME=iiiflocal
 export SSL_KEY_NAME=iiiflocal
+export FCREPO_SERVER=fcrepolocal

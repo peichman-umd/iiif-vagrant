@@ -2,7 +2,7 @@
 
 SERVICE_USER=vagrant
 SERVICE_GROUP=vagrant
-LORIS_VERSION=2.0.1
+LORIS_VERSION=development
 
 # Loris dependencies
 pip install Werkzeug
