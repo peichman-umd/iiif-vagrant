@@ -31,4 +31,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/apache.sh'
   # HTTPS certificate for Apache
   config.vm.provision "shell", path: 'scripts/https-cert.sh'
+
+  # server-specific configuration files
+  config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
+  config.vm.provision "file", source: 'files/loris2.conf', destination: '/apps/iiif/loris/conf/loris2.conf'
+
 end
