@@ -1,9 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+system("scripts/install-trigger-plugin.sh")
+
 Vagrant.configure("2") do |config|
-  config.vm.box = "puppetlabs/centos-7.0-64-puppet"
-  config.vm.box_version = "1.0.1"
+
+  config.trigger.before :up do
+    run  "scripts/host-prereqs.sh"
+  end
+
+  config.vm.box = "peichman-umd/ruby"
 
   config.vm.hostname = 'iiiflocal'
 
@@ -11,6 +17,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder "dist", "/apps/dist"
   config.vm.synced_folder "/apps/git/iiif-env", "/apps/git/iiif-env"
+  config.vm.synced_folder "/apps/git/pcdm-manifests", "/apps/iiif/pcdm-manifests"
 
   # system packages and hosts file
   config.vm.provision "puppet"
@@ -27,6 +34,15 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/loris-install.sh', privileged: false
   # runtime environment
   config.vm.provision "shell", path: 'scripts/env.sh'
+
+  # Passenger
+  config.vm.provision "shell", path: "scripts/passenger.sh", privileged: true
+  # Nodejs for rails asset pipeline
+  config.vm.provision "shell", path: "scripts/nodejs.sh", privileged: true
+  # pcdm-manifests app
+  config.vm.provision "shell", path: "scripts/railsapp.sh", privileged: false
+
+
   # Apache runtime setup
   config.vm.provision "shell", path: 'scripts/apache.sh'
   # HTTPS certificate for Apache
