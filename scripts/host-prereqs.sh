@@ -43,3 +43,18 @@ else
     exit 1
   fi
 fi
+
+# 3. Ensure fcrepo-vagrant is up and is accessible at fcrepolocal
+
+FCREPO_URL=https://fcrepolocal/fcrepo/
+
+echo "3. Ensure fcrepolocal is running"
+status=$(curl -k $FCREPO_URL -s -w "%{http_code}" -o /dev/null)
+
+if [ $status == 200 ]; then
+  echo "Got success status for $FCREPO_URL"
+else
+  echo "Got HTTP $status for $FCREPO_URL"
+  echo "Ensure you have fcrepo-vagrant running and you can access $FCREPO_URL."
+  exit 1
+fi 
