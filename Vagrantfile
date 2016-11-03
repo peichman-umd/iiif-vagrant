@@ -51,5 +51,6 @@ Vagrant.configure("2") do |config|
   # server-specific configuration files
   config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
   config.vm.provision "file", source: 'files/loris2.conf', destination: '/apps/iiif/loris/conf/loris2.conf'
+  config.vm.provision "file", source: 'files/pcdm2manifest.yml', destination: '/apps/iiif/pcdm-manifests/config/pcdm2manifest.yml'
 
 end
