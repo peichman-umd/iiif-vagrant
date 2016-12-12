@@ -2,7 +2,7 @@
 
 SERVICE_USER_GROUP=vagrant:vagrant
 
-LORIS_VERSION=2.0.1
+LORIS_VERSION=development
 LORIS_TGZ=/apps/dist/loris-${LORIS_VERSION}.tar.gz
 # look for a cached tarball
 if [ ! -e "$LORIS_TGZ" ]; then
