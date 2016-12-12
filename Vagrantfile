@@ -53,6 +53,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: 'files/pcdm2manifest.yml', destination: '/apps/iiif/pcdm-manifests/config/pcdm2manifest.yml'
 
   # start services
-  config.vm.provision 'shell', inline: 'cd /apps/iiif && ./control start'
+  config.vm.provision 'shell', inline: 'cd /apps/iiif && ./control start', privileged: false
 
 end
