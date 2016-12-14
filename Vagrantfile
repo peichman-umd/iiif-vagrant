@@ -22,6 +22,13 @@ Vagrant.configure("2") do |config|
   # system packages and hosts file
   config.vm.provision "puppet"
 
+  # copy the default vagrant key so we can easily ssh between fcrepo and solr boxes
+  # this works because this base box adds the insecure public key to the vagrant
+  # user's authorized_hosts file
+  config.vm.provision "file",
+    source: "#{ENV['HOME']}/.vagrant.d/insecure_private_key",
+    destination: "/home/vagrant/.ssh/id_rsa"
+
   # firewall
   config.vm.provision "shell", path: 'scripts/openports.sh', args: [80, 443]
   # Python
@@ -52,6 +59,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
   config.vm.provision "file", source: 'files/pcdm2manifest.yml', destination: '/apps/iiif/pcdm-manifests/config/pcdm2manifest.yml'
 
+  # SSL client cert setup
+  config.vm.provision 'shell', inline: 'cd /apps/iiif/scripts && ./sslsetup.sh', privileged: false
   # start services
   config.vm.provision 'shell', inline: 'cd /apps/iiif && ./control start', privileged: false
 
