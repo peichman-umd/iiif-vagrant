@@ -16,13 +16,17 @@ cd /apps/loris-${LORIS_VERSION}
 python setup.py install \
     --image-cache /apps/iiif/loris/cache/images \
     --tmp-dir /apps/iiif/loris/tmp \
-    --www-dir /apps/iiif/apache/html/loris \
+    --www-dir /apps/iiif/apache/html/images \
     --log-dir /apps/iiif/loris/logs \
     --config-dir /apps/iiif/loris/conf \
     --info-cache /apps/iiif/loris/cache/info \
     --source-images /apps/iiif/images \
     --loris-owner "$SERVICE_USER" \
     --loris-group "$SERVICE_GROUP"
+
+# reset the config file to the one in our iiif-env
+cd /apps/iiif
+git checkout -- loris/conf/loris2.conf
 
 # Unless Loris Version > 2.0.1, we need to patch the resolver
 if [ $LORIS_VERSION = "2.0.1" ]; then
