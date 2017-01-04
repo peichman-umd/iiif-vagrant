@@ -2,11 +2,11 @@
 
 SERVICE_USER_GROUP=vagrant:vagrant
 
-LORIS_VERSION=development
+LORIS_VERSION=2.1.0-final
 LORIS_TGZ=/apps/dist/loris-${LORIS_VERSION}.tar.gz
 # look for a cached tarball
 if [ ! -e "$LORIS_TGZ" ]; then
-    LORIS_PKG_URL=https://github.com/loris-imageserver/loris/archive/${LORIS_VERSION}.tar.gz
+    LORIS_PKG_URL=https://github.com/loris-imageserver/loris/archive/v${LORIS_VERSION}.tar.gz
     curl -Lso "$LORIS_TGZ" "$LORIS_PKG_URL"
 fi
 tar xvzf "$LORIS_TGZ" --directory /apps

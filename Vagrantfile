@@ -22,6 +22,12 @@ Vagrant.configure("2") do |config|
   # system packages and hosts file
   config.vm.provision "puppet"
 
+  # configure Git
+  config.vm.provision 'shell', path: 'scripts/git.sh', args: [`git config user.name`, `git config user.email`],
+    privileged: false
+  # install runtime env
+  config.vm.provision "shell", path: "scripts/env.sh"
+
   # copy the default vagrant key so we can easily ssh between fcrepo and solr boxes
   # this works because this base box adds the insecure public key to the vagrant
   # user's authorized_hosts file
@@ -39,8 +45,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/loris.sh'
   # install Loris runtime
   config.vm.provision "shell", path: 'scripts/loris-install.sh', privileged: false
-  # runtime environment
-  config.vm.provision "shell", path: 'scripts/env.sh'
 
   # Passenger
   config.vm.provision "shell", path: "scripts/passenger.sh", privileged: true
