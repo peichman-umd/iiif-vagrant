@@ -41,6 +41,12 @@ package { "freetype-devel":
 package { "libtiff-devel":
   ensure => present,
 }
+package { "mod_ssl":
+  ensure => present,
+}
+package { "git":
+  ensure => present,
+}
 
 host { 'fcrepolocal':
   ip => '192.168.40.10',
