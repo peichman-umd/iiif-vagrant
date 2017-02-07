@@ -59,6 +59,9 @@ Vagrant.configure("2") do |config|
   # HTTPS certificate for Apache
   config.vm.provision "shell", path: 'scripts/https-cert.sh'
 
+  # install Mirador viewer
+  config.vm.provision 'shell', path: 'scripts/mirador.sh'
+
   # server-specific configuration files
   config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
   config.vm.provision "file", source: 'files/pcdm2manifest.yml', destination: '/apps/iiif/pcdm-manifests/config/pcdm2manifest.yml'
