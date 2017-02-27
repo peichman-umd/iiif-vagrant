@@ -53,3 +53,8 @@ Loris should be running at <https://iiiflocal/images/>
 
 [iiif-env]: https://bitbucket.org/umd-lib/iiif-env
 [fcrepo-vagrant]: https://github.com/umd-lib/fcrepo-vagrant
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (Apache 2.0).
+
