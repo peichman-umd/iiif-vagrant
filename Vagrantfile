@@ -18,6 +18,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "dist", "/apps/dist"
   config.vm.synced_folder "/apps/git/iiif-env", "/apps/git/iiif-env"
   config.vm.synced_folder "/apps/git/pcdm-manifests", "/apps/iiif/pcdm-manifests"
+  config.vm.synced_folder "/apps/git/mirador-static", "/apps/git/mirador-static"
 
   # system packages and hosts file
   config.vm.provision "puppet"
@@ -60,7 +61,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/https-cert.sh'
 
   # install Mirador viewer
-  config.vm.provision 'shell', path: 'scripts/mirador.sh'
+  config.vm.provision 'shell', path: 'scripts/mirador.sh', privileged: false
 
   # server-specific configuration files
   config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
