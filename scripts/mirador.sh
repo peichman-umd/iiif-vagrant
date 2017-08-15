@@ -1,15 +1,12 @@
 #!/bin/bash
 
-SERVICE_USER_GROUP=vagrant:vagrant
+MIRADOR_VERSION=1.1.0
+MIRADOR_BRANCH=1.1.0
 
-MIRADOR_VERSION=1.0
-MIRADOR_TGZ=/apps/dist/mirador-static-${MIRADOR_VERSION}.tar.gz
-# look for a cached tarball
-if [ ! -e "$MIRADOR_TGZ" ]; then
-    MIRADOR_PKG_URL=https://github.com/umd-lib/mirador-static/archive/v${MIRADOR_VERSION}.tar.gz
-    curl -Lso "$MIRADOR_TGZ" "$MIRADOR_PKG_URL"
-fi
-tar xvzf "$MIRADOR_TGZ" --directory /apps
-ln -s /apps/mirador-static-${MIRADOR_VERSION} /apps/iiif/apache/html/viewer
+mkdir -p /apps/iiif/mirador-static
+cd /apps/iiif/mirador-static
+git clone file:///apps/git/mirador-static "$MIRADOR_VERSION"
+cd "$MIRADOR_VERSION"
+git checkout "$MIRADOR_BRANCH"
 
-chown -R "$SERVICE_USER_GROUP" /apps/mirador-static-${MIRADOR_VERSION}
+ln -sf /apps/iiif/mirador-static/${MIRADOR_VERSION} /apps/iiif/apache/html/viewer/${MIRADOR_VERSION}

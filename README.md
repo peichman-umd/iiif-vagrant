@@ -5,18 +5,13 @@ images from Fedora 4
 
 ## Prerequisites
 
-1. Clone the `develop` branch of [iiif-env] into 
-   `/apps/git/iiif-env`:
-   
-   ```
-   cd /apps/git
-   git clone -b develop git@bitbucket.org:umd-lib/iiif-env.git
-   ```
-   
-2. To serve images from Fedora 4, clone and run the
+1. Clone [iiif-env] into `/apps/git/iiif-env`.
+2. Clone [pcdm-manifests] into `/apps/git/pcdm-manifests`.
+3. Clone [mirador-static] into `/apps/git/mirador-static`.
+4. To serve images from Fedora 4, clone and run the
    [fcrepo-vagrant]. The HTTP resolver in Loris is currently
    configured to serve images from
-   <https://fcrepolocal/fcrepo/rest/{id}>
+   <https://fcrepolocal/fcrepo/rest/{id}>.
    
 ## Setup
 
@@ -33,14 +28,6 @@ images from Fedora 4
    vagrant up
    ```
 
-3. Start Apache:
-
-   ```
-   vagrant ssh
-   cd /apps/iiif/apache
-   ./control start
-   ```
-
 4. Add the server to your workstation's hosts file:
 
    ```
@@ -52,6 +39,8 @@ The server should now be up and running at <https://iiiflocal>
 Loris should be running at <https://iiiflocal/images/>
 
 [iiif-env]: https://bitbucket.org/umd-lib/iiif-env
+[pcdm-manifests]: https://github.com/umd-lib/pcdm-manifests
+[mirador-static]: https://github.com/umd-lib/mirador-static
 [fcrepo-vagrant]: https://github.com/umd-lib/fcrepo-vagrant
 
 ## License
