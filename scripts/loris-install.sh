@@ -4,6 +4,9 @@ SERVICE_USER=vagrant
 SERVICE_GROUP=vagrant
 LORIS_VERSION=2.1.0-final
 
+# select the version of Python to install Loris into
+export PYENV_VERSION=2.7.12
+
 # Loris dependencies
 pip install Werkzeug
 pip install Pillow
