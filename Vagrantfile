@@ -40,8 +40,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/openports.sh', args: [80, 443]
   # Python
   config.vm.provision "shell", path: 'scripts/python.sh'
-  # mod_wsgi
-  config.vm.provision "shell", path: 'scripts/modwsgi.sh'
   # Loris
   config.vm.provision "shell", path: 'scripts/loris.sh'
   # install Loris runtime
