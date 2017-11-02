@@ -2,7 +2,7 @@
 
 SERVICE_USER=vagrant
 SERVICE_GROUP=vagrant
-LORIS_VERSION=2.1.0-final
+LORIS_VERSION=2.2.0
 
 # select the version of Python to install Loris into
 export PYENV_VERSION=2.7.12
