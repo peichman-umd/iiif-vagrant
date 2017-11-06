@@ -47,6 +47,9 @@ package { "mod_ssl":
 package { "git":
   ensure => present,
 }
+package { "bc":
+  ensure => present,
+}
 
 
 # Passenger prereqs
