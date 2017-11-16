@@ -38,17 +38,13 @@ Vagrant.configure("2") do |config|
 
   # firewall
   config.vm.provision "shell", path: 'scripts/openports.sh', args: [80, 443]
-  # Python
-  config.vm.provision "shell", path: 'scripts/python.sh'
-  # mod_wsgi
-  config.vm.provision "shell", path: 'scripts/modwsgi.sh'
+  # pyenv and Python
+  config.vm.provision "shell", path: 'scripts/python.sh', privileged: false
   # Loris
   config.vm.provision "shell", path: 'scripts/loris.sh'
   # install Loris runtime
   config.vm.provision "shell", path: 'scripts/loris-install.sh', privileged: false
 
-  # Passenger
-  config.vm.provision "shell", path: "scripts/passenger.sh", privileged: true
   # Nodejs for rails asset pipeline
   config.vm.provision "shell", path: "scripts/nodejs.sh", privileged: true
   # pcdm-manifests app
@@ -59,6 +55,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: 'scripts/apache.sh'
   # HTTPS certificate for Apache
   config.vm.provision "shell", path: 'scripts/https-cert.sh'
+  # Passenger
+  config.vm.provision "shell", path: "scripts/passenger.sh", privileged: true
 
   # install Mirador viewer
   config.vm.provision 'shell', path: 'scripts/mirador.sh', privileged: false

@@ -5,3 +5,4 @@ export SERVICE_GROUP=vagrant
 export SSL_CERT_NAME=iiiflocal
 export SSL_KEY_NAME=iiiflocal
 export FCREPO_SERVER=fcrepolocal
+export FEDORA_SERVER=fedoradev.lib.umd.edu

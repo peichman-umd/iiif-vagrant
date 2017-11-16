@@ -47,6 +47,30 @@ package { "mod_ssl":
 package { "git":
   ensure => present,
 }
+package { "bc":
+  ensure => present,
+}
+
+
+# Passenger prereqs
+package { "epel-release":
+  ensure => present,
+}
+package { "ruby-devel":
+  ensure  => present,
+  require => Package["epel-release"],
+}
+package { "rubygem-rake":
+  ensure  => present,
+  require => Package["epel-release"],
+}
+package { "rubygem-rack":
+  ensure  => present,
+  require => Package["epel-release"],
+}
+package { "libcurl-devel":
+  ensure => present,
+}
 
 host { 'fcrepolocal':
   ip => '192.168.40.10',
