@@ -2,6 +2,12 @@ Package {
   allow_virtual => false,
 }
 
+exec { "IUS release package":
+  command => "/usr/bin/rpm -i https://centos7.iuscommunity.org/ius-release.rpm",
+  unless  => "/usr/bin/rpm -q ius-release",
+  require => Package["epel-release"],
+}
+
 # development and troubleshooting tools
 package { "vim-enhanced":
   ensure => present,
@@ -44,10 +50,17 @@ package { "libtiff-devel":
 package { "mod_ssl":
   ensure => present,
 }
-package { "git":
-  ensure => present,
+# need a newer version of Git; use the IUS community repo
+# see https://ius.io/
+package { "git2u":
+  ensure  => present,
+  require => Exec["IUS release package"],
 }
 package { "bc":
+  ensure => present,
+}
+# cloning from GitHub over HTTPS requires updating NSS
+package { "nss":
   ensure => present,
 }
 

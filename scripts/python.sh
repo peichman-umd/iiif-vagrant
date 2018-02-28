@@ -2,6 +2,9 @@
 
 PYTHON_VERSION=2.7.12
 
+# GitHub requires newer TLS versions for HTTPS cloning
+# see https://github.com/blog/2507-weak-cryptographic-standards-removed
+export GIT_SSL_VERSION=tlsv1
 # install pyenv (https://github.com/pyenv/pyenv-installer)
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 
