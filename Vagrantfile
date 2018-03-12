@@ -63,7 +63,6 @@ Vagrant.configure("2") do |config|
 
   # server-specific configuration files
   config.vm.provision "file", source: 'files/env', destination: '/apps/iiif/config/env'
-  config.vm.provision "file", source: 'files/pcdm2manifest.yml', destination: '/apps/iiif/pcdm-manifests/config/pcdm2manifest.yml'
 
   # SSL client cert setup
   config.vm.provision 'shell', inline: 'cd /apps/iiif/scripts && ./sslsetup.sh', privileged: false
