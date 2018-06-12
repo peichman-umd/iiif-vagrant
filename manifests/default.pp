@@ -2,10 +2,16 @@ Package {
   allow_virtual => false,
 }
 
+# make sure we have the latest CA certs
+# needed to install the IUS release package
+package { "ca-certificates":
+  ensure => latest,
+}
+
 exec { "IUS release package":
   command => "/usr/bin/rpm -i https://centos7.iuscommunity.org/ius-release.rpm",
   unless  => "/usr/bin/rpm -q ius-release",
-  require => Package["epel-release"],
+  require => [ Package["ca-certificates"], Package["epel-release"] ],
 }
 
 # development and troubleshooting tools
