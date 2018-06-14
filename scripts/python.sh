@@ -20,4 +20,7 @@ END
 
 # install Python
 source $HOME/.pyenv.bash_profile
+# force python-build to use TLSv1 when downloading
+export PYTHON_BUILD_HTTP_CLIENT=curl
+export PYTHON_BUILD_CURL_OPTS=--tlsv1
 pyenv install "$PYTHON_VERSION"
